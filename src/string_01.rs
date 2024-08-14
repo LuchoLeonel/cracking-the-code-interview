@@ -63,4 +63,25 @@ pub fn run() {
     print(is_permutation(string_5, string_8));
     print(is_permutation(string_1, string_9));
 
+    fn is_permutation_chat_gpt<'a>(string1: &'a str, string2: &'a str) -> (&'a str, &'a str, bool) {
+        if string1.len() != string2.len() {
+            return (string1, string2, false);
+        }
+
+        let mut chars_number = HashMap::new();
+
+        for ch in string1.chars() {
+            *chars_number.entry(ch).or_insert(0) += 1;
+        }
+
+        for ch in string2.chars() {
+            *chars_number.entry(ch).or_insert(0) -= 1;
+        }
+
+        if chars_number.values().any(|&count| count != 0) {
+            return (string1, string2, false);
+        }
+
+        (string1, string2, true)
+    }
 }

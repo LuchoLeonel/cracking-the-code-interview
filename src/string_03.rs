@@ -58,4 +58,42 @@ pub fn run() {
     print(is_palindrome_permutation(sentence1, sentence4));
     print(is_palindrome_permutation(sentence1, sentence5));
     
+
+    fn is_palindrome_permutation_chat_gpt<'a>(raw_string1: &'a str, raw_string2: &'a str) -> (&'a str, &'a str, bool) {
+        let normalize = |s: &str| {
+            s.chars().filter(|c| !c.is_whitespace()).collect::<String>().to_lowercase()
+        };
+        let string1 = normalize(raw_string1);
+        let string2 = normalize(raw_string2);
+
+        if string1.len() != string2.len() {
+            return (raw_string1, raw_string2, false);
+        }
+
+        let mut counter = HashMap::new();
+        let mut impar_counter = 0;
+
+        for ch in string1.chars() {
+            let count = counter.entry(ch).or_insert(0);
+            *count += 1;
+            if *count % 2 == 0 {
+                impar_counter -= 1;
+            } else {
+                impar_counter += 1;
+            }
+        }
+        for ch in string2.chars() {
+            *counter.entry(ch).or_insert(0) -=1;
+        }
+
+        if counter.values().any(|&count| count != 0) {
+            return (raw_string1, raw_string2, false);
+        }
+
+        if impar_counter > 1 {
+            return (raw_string1, raw_string2, false);
+        }
+        
+        (raw_string1, raw_string2, true)
+    }
 }

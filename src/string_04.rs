@@ -67,4 +67,33 @@ pub fn run() {
     print(is_one_way(sentence1, sentence8));
     print(is_one_way(sentence1, sentence9));
 
+    fn is_one_way_chat_gpt<'a>(string1: &'a str, string2: &'a str) -> (&'a str, &'a str, bool) {
+        let len_1 = string1.len();
+        let len_2 = string2.len();
+        if (len_1 as isize - len_2 as isize).abs() > 1 {
+            return (string1, string2, false);
+        }
+
+       let (shorter, longer) = if len_1 > len_2 { (string1, string2) } else { (string2, string1) };
+        let mut found_difference = false;
+        let mut i = 0;
+        let mut j = 0;
+
+        while i < shorter.len() && j < longer.len() {
+            if shorter.chars().nth(i) != longer.chars().nth(j) {
+                if found_difference {
+                    return (string1, string2, false);
+                }
+                found_difference = true;
+                if len_1 == len_2 {
+                    i += 1;
+                }
+            } else {
+                i += 1;
+            }
+            j += 1;
+        }
+
+        (string1, string2, true)
+    }
 }

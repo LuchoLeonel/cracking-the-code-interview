@@ -72,4 +72,15 @@ pub fn run() {
     print(is_substring(sentence1, sentence12));
     print(is_substring(sentence1, sentence13));
     print(is_substring(sentence1, sentence14));
+
+    fn is_substring_chatgpt<'a>(string1: &'a str, string2: &'a str) -> (&'a str, &'a str, bool) {
+        if string1.len() != string2.len() {
+            return (string1, string2, false);
+        }
+        
+        let concatenated = format!("{}{}", string1, string1);
+        let coincidente = concatenated.contains(string2);
+        
+        (string1, string2, coincidente)
+    }
 }

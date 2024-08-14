@@ -22,4 +22,18 @@ pub fn run() {
     print(is_unique(string_1));
     print(is_unique(string_2));
     print(is_unique(string_3));
+
+    fn is_unique_chat_gpt(string: &str) -> (&str, bool) {
+        let chars: Vec<char> = string.chars().collect();
+        let len = chars.len();
+        for i in 0..len {
+            for j in (i + 1)..len {
+                if chars[i] == chars[j] {
+                    return (string, false);
+                }
+            }
+        }
+        (string, true)
+    }
+
 }

@@ -30,4 +30,18 @@ pub fn run() {
     print(urlify(string1));
     print(urlify(string2));
     
+    fn urlify_chat_gpt(string: &str) -> String {
+        let mut new_string = String::new();
+
+        for (index, ch) in string.chars().enumerate() {
+            if ch != ' ' {
+                new_string.push(ch);
+            } else if index != string.len() - 1 {
+                new_string.push_str("%20");
+            }
+        }
+
+        new_string
+    }
+
 }

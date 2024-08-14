@@ -4,6 +4,8 @@ mod string_02;
 mod string_03;
 mod string_04;
 mod string_05;
+mod string_06;
+mod string_07;
 mod string_08;
 mod linked_list_00;
 mod linked_list_01;
@@ -34,6 +36,8 @@ mod recursive_and_dynamic_programming_01;
 mod recursive_and_dynamic_programming_02;
 mod recursive_and_dynamic_programming_03;
 mod recursive_and_dynamic_programming_04;
+mod recursive_and_dynamic_programming_05;
+mod recursive_and_dynamic_programming_06;
 
 fn main() {
     //string_00::run();
@@ -42,6 +46,8 @@ fn main() {
     //string_03::run();
     //string_04::run();
     //string_05::run();
+    //string_06::run();
+    string_07::run();
     //string_08::run();
     //linked_list_00::run();
     //linked_list_01::run();
@@ -71,5 +77,7 @@ fn main() {
     //recursive_and_dynamic_programming_01::run();
     //recursive_and_dynamic_programming_02::run();
     //recursive_and_dynamic_programming_03::run();
-    recursive_and_dynamic_programming_04::run();
+    //recursive_and_dynamic_programming_04::run();
+    //recursive_and_dynamic_programming_05::run();
+    //recursive_and_dynamic_programming_06::run();
 }
